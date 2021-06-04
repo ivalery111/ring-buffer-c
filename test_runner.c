@@ -23,6 +23,9 @@ int main(void) {
   rc = rb_get(&rb, buffer, (6 + 9));
   fprintf(stdout, "buffer: %s\n", buffer);
 
+  rc = rb_destroy(&rb);
+  assert(rc == RB_OK);
+
   fprintf(stdout, "Done!\n");
 
   return 0;

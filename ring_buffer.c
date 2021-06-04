@@ -28,6 +28,27 @@ exit:
   return rc;
 }
 
+int32_t rb_destroy(rb_t *rb) {
+  assert(rb != NULL);
+
+  int32_t rc = RB_OK;
+
+  if (rb == NULL) {
+    rc = RB_INVLID;
+    goto exit;
+  }
+
+  memset(rb->buffer, 0, rb->buffer_size);
+  rb->buffer_size = 0;
+  rb->bytes_available = 0;
+  rb->write = 0;
+  rb->read = 0;
+  free(rb->buffer);
+
+exit:
+  return rc;
+}
+
 int32_t rb_put(rb_t *rb, const uint8_t *data, size_t data_size) {
   assert(rb != NULL);
   assert(data != NULL);

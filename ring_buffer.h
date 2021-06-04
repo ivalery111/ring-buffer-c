@@ -19,8 +19,8 @@ typedef struct {
   size_t write; /* Write position pointer */
 } rb_t;
 
-
 int32_t rb_init(rb_t *rb, size_t buffer_size);
+int32_t rb_destroy(rb_t *rb);
 
 int32_t rb_put(rb_t *rb, const uint8_t *data, size_t data_size);
 int32_t rb_get(rb_t *rb, uint8_t *data, size_t data_size);
